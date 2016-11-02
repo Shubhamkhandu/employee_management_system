@@ -4,20 +4,19 @@ NAME : SHUBHAM KHANDELWAL
 BRANCH : INFORMATION TECHNOLOGY
 APPLICATIONS OF THE PROJECT : 
                          ADMIN
-						USER NAME : abhijeet
-						PASSWORD : abhijeetcoep
-					
+                 USER NAME : abhijeet
+                 PASSWORD : abhijeetcoep			
 
-		MANAGER 1				MANAGER 2				MANAGER 3
-	  USER NAME : shubham			   USER NAME: narendra			    USER NAME: nehru
-	  PASSWORD : shubham18			   PASSWORD: modi123			    PASSWORD : nehru123
+               MANAGER 1                  MANAGER 2                MANAGER 3
+          USER NAME : shubham        USER NAME: narendra       USER NAME: nehru
+          PASSWORD : shubham18       PASSWORD: modi123        PASSWORD : nehru123
 
-        EMPLOYEES
-	    USER NAME : Id no.
+            EMPLOYEES
+	USER NAME : Id no.
 	PASSWORD: Last name(with first letter capital)
-			ex:
-		Id : 2
-	PASSWORD: Jain
+         ex:
+         Id : 2
+         PASSWORD: Jain
 
 MANAGER LOGIN:
 	-> ADD
