@@ -9,5 +9,5 @@ char *space(char *ch);
 int check(char *id, char *pa,int key);
 int change(FORM *form, FIELD **field,int key);
 int newpass(WINDOW *form1,int key);
-
+char *tostring(char str[],int num);
 #endif

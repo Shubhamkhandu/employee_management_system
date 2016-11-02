@@ -5,11 +5,30 @@
 #include<form.h>
 #include<ctype.h>
 #include "password.h"
+#include "allfunction.h"
+//integer to string
+
+char *tostring(char str[],int num){
+	int i, rem, len = 0, n;
+	n = num;
+	while (n != 0){
+		len++;
+		n /= 10;
+	}
+	for (i = 0; i < len; i++){
+		rem = num % 10;
+		num = num / 10;
+		str[len - (i + 1)] = rem + '0';
+	}
+	str[len] = '\0';
+	return str;
+}
+
 char *space(char *ch){
 	int i = 0;
 	char *ch1;
-	ch1 = (char *)malloc(sizeof(char)*31);
-	while(ch[i] != ' '){
+	ch1 = (char *)malloc(sizeof(char) * 30);
+	while(ch[i] != 32) {
 		ch1[i] = ch[i];
 		i++;
 	}
@@ -19,29 +38,49 @@ char *space(char *ch){
 //to check password
 int check(char *id, char *pa,int key){
 	pass i;
+	emp t;
+	char a[30],*ch,fname1[] = "database.txt";;
 	int l,p;
-	system("chmod 777 usernamepass.txt");
-	FILE *fp;
-	fp = fopen("usernamepass.txt", "r");
-	if(fp == NULL){
-		printf("file cannot be opened\n");
-		exit(0);
+	if(key == 2|| key == 0){
+		system("chmod 777 usernamepass.txt");
+		FILE *fp;
+		fp = fopen("usernamepass.txt", "r");
+		while(1){
+			fread(&i,sizeof(pass),1,fp);
+			if(feof(fp)){
+				break;
+			}
+			l = strlen(i.ID);
+			p = strlen(i.Pass);
+			if((strncmp(id,i.ID,l) == 0) && (strncmp(pa,i.Pass,p) == 0)){		
+				system("chmod 000 usernamepass.txt");			
+				fclose(fp);		
+				return 1;
+			}
+		}	
+		system("chmod 000 usernamepass.txt");
+		fclose(fp);	
+		return 0;
 	}
-	while(1){
-		fread(&i,sizeof(pass),1,fp);
-		if(feof(fp)){
-			break;
+	if(key == 1){
+		FILE *fp;
+		fp = fopen(fname1,"rb");
+		while(1){
+			fread(&t,sizeof(emp),1,fp);
+			if(feof(fp)){
+				break;
+			}
+			p = strlen(t.lname);
+			ch = space(id);
+			l = atoi(ch);
+			if((t.Id == l) && (strncmp(pa,t.lname,p) == 0)){
+				fclose(fp);
+				return t.Id;
+			}
 		}
-		l = strlen(i.ID);
-		p = strlen(i.Pass);
-		if((strncmp(id,i.ID,l) == 0) && (strncmp(pa,i.Pass,p) == 0)){		
-			system("chmod 000 usernamepass.txt");			
-			fclose(fp);		
-			return 1;
-		}
-	}	
-	system("chmod 000 usernamepass.txt");
-	fclose(fp);	
+		fclose(fp);
+		return 0;
+	}
 	return 0;
 	 
 }

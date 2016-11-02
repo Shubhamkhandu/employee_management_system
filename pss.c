@@ -27,7 +27,12 @@ int main(){
 	 b = "modi123";
 	strcpy(i.ID,a);
 	strcpy(i.Pass,b);
-	fwrite(&i,sizeof(pass),1,fp);	
+	fwrite(&i,sizeof(pass),1,fp);
+	 a="nehru";
+	 b = "nehru123";
+	strcpy(i.ID,a);
+	strcpy(i.Pass,b);
+	fwrite(&i,sizeof(pass),1,fp);
 	system("chmod 000 usernamepass.txt");
 	fclose(fp);
 }
